@@ -6,6 +6,13 @@ const express = require('express')
 // .env
 require('dotenv').config(); 
 
+// EJS
+app.set('view engine', 'ejs'); 
+
+// Static folder
+app.use(express.static('public'));
+
+
 const db =  mysql.createConnection(
   {
     host: process.env.DB_HOST,
@@ -13,13 +20,18 @@ const db =  mysql.createConnection(
     password: process.env.DB_PASS,
     database: process.env.DB_NAME
   });
+  
+  db.connect((err) => {
+    if (err) { throw err;}
+    console.log('Connecté au serveur MySQL');
+  })
+  
+// Routes
+const index = require('./routes/indexRoute')
 
-db.connect((err) => {
-	if (err) { throw err;}
-	console.log('Connecté au serveur MySQL');
-});
-
-	// Listen
+app.use('/', index)
+	
+// Listen
 app.listen(port, () => {
   console.log(`Tourne sur le port : ${port}`);
 });
