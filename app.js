@@ -42,6 +42,7 @@ app.use(express.static('public'));
 // Routes
 // Produit 
 require("./routes/produit.routes")(app);
+require("./routes/categorie.routes")(app);
 
 // Index
 const index = require('./routes/indexRoute')

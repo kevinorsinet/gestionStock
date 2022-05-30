@@ -9,7 +9,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING(55)
     },
     nom_produit: {
-      type: Sequelize.STRING(20)
+      type: Sequelize.STRING(50)
     },
 		quantite_produit: {
       type: Sequelize.INTEGER

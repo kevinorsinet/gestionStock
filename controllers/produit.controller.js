@@ -53,7 +53,8 @@ exports.create = (req, res) => {
 		quantite_produit: req.body.quantite_produit,
 		image_produit: req.body.image_produit,
 		donation_produit: req.body.donation_produit,
-    date_ajout: req.body.donation_produit
+    date_ajout: req.body.donation_produit,
+		categorieId: req.body.categorieId
   };
 
   // Save Produit in the database
@@ -74,7 +75,7 @@ exports.findAll = (req, res) => {
   const nom_produit = req.query.nom_produit;
   var condition = nom_produit ? { nom_produit: { [Op.like]: `%${nom_produit}%` } } : null;
 
-  Produit.findAll({ where: condition })
+  return Produit.findAll({ where: condition, include: ["categorie"] })
     .then(data => {
       res.send(data);
     })
@@ -89,7 +90,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
 	const idProduit = req.params.id;
 
-	Produit.findByPk(idProduit)
+	Produit.findByPk(idProduit, {include: ["categories"]})
 	.then(data => {
 		if (data) {
 			res.send(data);
@@ -156,3 +157,4 @@ exports.delete = (req, res) => {
 	});
 	;
 };
+

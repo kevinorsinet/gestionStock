@@ -20,6 +20,14 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.produits = require("./produit.model.js")(sequelize, Sequelize);
-// db.categories = require("./categorie.model.js")(sequelize, Sequelize);
+db.categories = require("./categorie.model.js")(sequelize, Sequelize);
+
+// Relation
+db.categories.hasMany(db.produits, {as: 'produits'});
+db.produits.belongsTo(db.categories, 
+  {
+    foreignKey: 'categorieId',
+    as: 'categorie'
+  });
 
 module.exports = db;
