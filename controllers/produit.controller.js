@@ -90,7 +90,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
 	const idProduit = req.params.id;
 
-	Produit.findByPk(idProduit, {include: ["categories"]})
+	Produit.findByPk(idProduit, {include: ["categorie"]})
 	.then(data => {
 		if (data) {
 			res.send(data);

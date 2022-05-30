@@ -129,12 +129,7 @@ exports.delete = (req, res) => {
 };
 
 exports.findAllWithProducts = (req, res) => { 
-  Categorie.findAll({
-		include: {
-			model: Produit,
-			as: 'produits'
-  	}
-	})
+  Categorie.findAll({include: 'produits'})
     .then(data => {
       res.send(data);
     })
