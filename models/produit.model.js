@@ -18,7 +18,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     },
 		image_produit: {
-      type: Sequelize.STRING(20)
+      type: Sequelize.STRING(100)
     },
 		donation_produit: {
       type: Sequelize.BOOLEAN
