@@ -22,9 +22,6 @@ module.exports = (sequelize, Sequelize) => {
     },
 		donation_produit: {
       type: Sequelize.BOOLEAN
-    },
-    date_ajout: {
-      type: Sequelize.DATE
     }
   });
 

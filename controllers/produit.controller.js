@@ -26,6 +26,13 @@ exports.create = (req, res) => {
     return;
   }
 
+	if (!req.body.commentaire_produit) {
+    res.status(400).send({
+      message: "Un commentaire doit être ajouté!"
+    });
+    return;
+  }
+
 	if (!req.body.image_produit) {
     res.status(400).send({
       message: "Une image doit être ajouté!"
@@ -40,20 +47,15 @@ exports.create = (req, res) => {
     return;
   }
 
-	if (!req.body.date_ajout) {
-    res.status(400).send({
-      message: "La date d'ajout ne peut être vide"
-    });
-    return;
-  }
+
   // Create a Produit
   const produit = {
     code_EAN: req.body.code_EAN,
     nom_produit: req.body.nom_produit,
 		quantite_produit: req.body.quantite_produit,
+		commentaire_produit: req.body.commentaire_produit,
 		image_produit: req.body.image_produit,
 		donation_produit: req.body.donation_produit,
-    date_ajout: req.body.donation_produit,
 		categorieId: req.body.categorieId
   };
 

@@ -39,10 +39,10 @@ CREATE TABLE utilisateur(
 CREATE TABLE produit(
         id_produit          Int  Auto_increment  NOT NULL ,
         code_EAN            Varchar (55) NOT NULL ,
-        nom_produit         Varchar (20) NOT NULL ,
+        nom_produit         Varchar (50) NOT NULL ,
         quantite_produit    Int NOT NULL ,
         commentaire_produit Mediumtext NOT NULL ,
-        image_produit       Varchar (20) NOT NULL ,
+        image_produit       Varchar (50) NOT NULL ,
         donation_produit    Bool NOT NULL ,
         date_ajout          Datetime NOT NULL ,
         id_utilisateur      Int NOT NULL ,

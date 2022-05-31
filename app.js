@@ -1,7 +1,15 @@
 const express = require('express')
 ,     app = express()
+,     cors = require('cors')
 // ,     mysql = require('mysql')
-, 		port = 3000;
+, 		port = 3001;
+
+// cors
+var corsOptions = {
+  origin: ["http://localhost:3000", "http://10.0.2.2::19000"]
+};
+
+app.use(cors(corsOptions));
 
 // .env
 require('dotenv').config(); 
